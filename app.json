@@ -20,12 +20,12 @@
 	    ]
     },
     "images": {
-      "large": "./assets/images/large.jpg",
-      "small": "./assets/images/small.jpg"
+      "large": "./assets/images/large.png",
+      "small": "./assets/images/small.png"
     },
     "category": "tools",
     "description": {
-    	"en": "Take snapshots from your IP camera and send them to your e-mail adress",
+    	"en": "Take snapshots from your IP camera and send them to your e-mail address",
         "nl": "Neem IP camera snapshots en stuur ze naar je e-mail adres"
     },
     "dependencies": {
