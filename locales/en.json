@@ -1,0 +1,20 @@
+{
+	"settings": {
+	    "timeduration": "Time duration in minutes",
+		"intro": "On this page you can manage your webcam and SMTP settings",
+		"mailsettings": "Mail settings",
+	    "interval_secs": "How many secs between snapshots",
+		"localipadress": "Local ip adress (without http://)",
+		"portNumber": "Portnumber",
+		"webcamcmd": "Webcam commandline",
+		"additionalparams": "Additional params",
+		"mailhostname": "SMTP server",
+		"mailsecure": "Mail secure(true for port 465)",
+		"mailfromadress": "Sender address",
+		"mailtoadress": "MailTo adress",
+		"mailsubject": "Mail subject",
+	    "mailtext":"Mail text",
+	    "mailpassword": "User password for SMTP server"
+	 }
+}
+

@@ -1,0 +1,207 @@
+<!doctype html>
+<html>
+    <head>
+		<style>
+			input {
+				font-size:16px;
+				width: 200px;
+				border: 1px dotted #000;
+			}
+			.row label {
+				width: 275px !important;
+			}
+            fieldset {
+                border: 1px solid #CCC;
+                padding: 2px;
+            }
+		</style>
+		<script type="text/javascript" src="/homey.js" data-origin="settings"></script>
+    </head>
+    <body>
+
+        <h1>Settings</h1>
+        <p data-i18n="settings.intro">On this page you can manage the settings for the webcam and the E-mail settings.</p>
+       
+       
+        <fieldset id="snapshotsettings">
+            <legend >Snapshot settings</legend>
+
+            <div class="field row">
+                <label data-i18n="settings.timeduration" for="time_duration">Time duration in minutes</label>
+                <input id="timeduration" type="text" value="" placeholder="1">
+            </div>
+            <div class="field row">
+                <label data-i18n="settings.interval_secs" for="interval_secs" >How many secs between snapshots</label>
+                <input id="intervalsec" type="text" value="" placeholder="3">
+            </div>
+        </fieldset>
+		<br>
+		<br>
+        <fieldset id="webcamsettings">
+		   <legend >Webcam settings</legend>
+                <div class="field row">
+                    <label data-i18n="settings.localipadress" for="localipadress" >Local ip adress (without http://)</label>
+                    <input id="localipadress" type="text" value="" placeholder="192.168.1.2"/>
+                </div>
+                <div class="field row">
+                    <label data-i18n="settings.portNumber" for="portNumber">Portnumber</label>
+                    <input id="portnumber" type="text" value="" placeholder="88"/>
+                </div>
+                <div class="field row">
+                    <label data-i18n="settings.webcamcmd" for="webcamcmd">Webcam commandline</label>
+                    <input id="webcamcmd" type="text" value="" placeholder="/cgi-bin/CGIProxy.fcgi?cmd=snapPicture2" />
+                </div>
+                <div class="field row">
+                    <label data-i18n="settings.additionalparams" for="additionalparams" >Additional params</label>
+                    <input id="additionalparams" type="text" value="" placeholder="&usr=admin&pwd=admin" />
+                </div>
+         </fieldset>
+		 <br><br>
+         <fieldset id="mailSettings">
+		    <legend >Mail settings</legend>
+            <div class="field row">
+                <label data-i18n="settings.mailhostname" for="mailhostname" >SMTP server</label>
+                <input id="mailhostname" type="text" value="" placeholder="smtp.gmail.com" />
+            </div>
+            <div class="field row">
+                <label data-i18n="settings.mailport" for="mailport" >SMTP port</label>
+                <input id="mailport" type="text" value="" placeholder="465"/>
+            </div>
+            <div class="field row">
+                 <label data-i18n="settings.mailsecure" for="mailsecure">Mail secure(true for port 465)</label>
+                 <input id="mailsecure" type="checkbox" checked="checked" />
+            </div>
+
+            <div class="field row">
+                <label data-i18n="settings.mailfromadress" for="mailfromadress" >Sender address</label>
+                <input id="mailfromadress" type="text" value="" placeholder="you@gmail.com"/>
+            </div>
+             <div class="field row">
+                 <label data-i18n="settings.mailpassword" for="mailpassword">User password for SMTP server</label>
+                 <input id="mailpassword" type="password" value="" placeholder="123verysave" />
+             </div>
+             <div class="field row">
+                 <label data-i18n="settings.mailtoadress" for="mailtoadress">MailTo adress</label>
+                 <input id="mailtoadress" type="text" value="" placeholder="to@gmail.com" />
+             </div>
+             <div class="field row">
+                 <label data-i18n="settings.mailsubject" for="mailsubject">Mail subject</label>
+                 <input id="mailsubject" type="text" value="" placeholder="Homey contact opend" />
+             </div>
+             <div class="field row">
+                 <label data-i18n="settings.mailtext" for="mailtext">Mail text</label>
+                 <input id="mailtext" type="text" multiple="multiple" value="" placeholder="Contact opened the pictured are included in the attached zip-file." />
+             </div>
+        </fieldset>
+        
+        <button class="right" data-i18n="settings.save" id="savebutton" >Save changes</button>
+     
+        <script type="text/javascript">
+       
+       function onHomeyReady(Homey){
+            Homey.ready();
+           // Homey.log("entered");
+            var saveElement = document.getElementById('savebutton');
+
+	        Homey.get('timeDuration', function(err, timeduration){
+		       if( err ) return console.error('Could not set timeduration', err);
+		       document.getElementById('timeduration').value = timeduration; 
+		    });
+
+	        Homey.get('intervalSec', function(err, intervalsec){
+		       if( err ) return console.error('Could not set interval', err);
+		       document.getElementById('intervalsec').value = intervalsec; 
+		    });
+		    
+		    Homey.get('localIpAdress', function(err, localipadress){
+		       if( err ) return console.error('Could not set ipadress', err);
+		       document.getElementById('localipadress').value = localipadress; 
+		    });
+		    
+		    Homey.get('portNumber', function(err, portnumber){
+		       if( err ) return console.error('Could not set portnumber', err);
+		       document.getElementById('portnumber').value = portnumber; 
+		    });
+		    
+		    Homey.get('webcamCommand', function(err, command){
+		       if( err ) return console.error('Could not set command', err);
+		       document.getElementById('webcamcmd').value = command; 
+		    });
+		    
+		    Homey.get('additionalParams', function(err, requestparams){
+		       if( err ) return console.error('Could not set requestparams', err);
+		       document.getElementById('additionalparams').value = requestparams; 
+		    });
+    
+		    Homey.get('mailHostname', function(err, mailhostname){
+		       if( err ) return console.error('Could not set mailhostname', err);
+		       document.getElementById('mailhostname').value = mailhostname; 
+            });
+            
+            Homey.get('mailPort', function(err, mailport){
+		       if( err ) return console.error('Could not set mailport', err);
+		       document.getElementById('mailport').value = mailport; 
+            });
+            
+            Homey.get('mailSecure', function(err, mailsecure){
+		       if( err ) return console.error('Could not set mailsecure', err);
+		       document.getElementById('mailsecure').value = mailsecure; 
+            });
+            
+            Homey.get('mailFromAdress', function(err, mailuserfromadress){
+		       if( err ) return console.error('Could not set mailuserfromadress', err);
+		       document.getElementById('mailfromadress').value = mailuserfromadress; 
+            });
+            
+            Homey.get('mailPassword', function(err, mailuserpass){
+		       if( err ) return console.error('Could not set mailuserpass', err);
+		       document.getElementById('mailpassword').value = mailuserpass; 
+            });
+
+            Homey.get('mailToAdress', function(err, mailto){
+		       if( err ) return console.error('Could not set mailTo', err);
+		       document.getElementById('mailtoadress').value = mailto; 
+            });
+            
+            Homey.get('mailSubject', function(err, mailsubject){
+		       if( err ) return console.error('Could not set mailSubject', err);
+		       document.getElementById('mailsubject').value = mailsubject; 
+            });
+            
+            Homey.get('mailText', function(err, mailtext){
+		       if( err ) return console.error('Could not set mailtext', err);
+		       document.getElementById('mailtext').value = mailtext; 
+            });
+            
+            saveElement.addEventListener('click', function(e) {
+           
+			saveElement.disabled = true;
+    
+            Homey.set('timeDuration', document.getElementById('timeduration').value);
+            Homey.set('intervalSec', document.getElementById('intervalsec').value);
+            Homey.set('localIpAdress', document.getElementById('localipadress').value);
+            Homey.set('portNumber', document.getElementById('portnumber').value);
+            Homey.set('webcamCommand', document.getElementById('webcamcmd').value);
+            Homey.set('additionalParams', document.getElementById('additionalparams').value);
+            
+            Homey.set('mailHostname', document.getElementById('mailhostname').value);
+            Homey.set('mailPort', document.getElementById('mailport').value);
+            Homey.set('mailSecure', document.getElementById('mailsecure').checked);
+            Homey.set('mailFromAdress', document.getElementById('mailfromadress').value);
+            Homey.set('mailPassword', document.getElementById('mailpassword').value);
+            Homey.set('mailToAdress', document.getElementById('mailtoadress').value);
+            Homey.set('mailSubject', document.getElementById('mailsubject').value);
+            Homey.set('mailText', document.getElementById('mailtext').value);
+            
+            //Homey.log ("saved the settings!");
+            
+            setTimeout(function() {
+                    saveElement.disabled = false;
+                }, 3500);
+            });
+
+        }
+       </script>
+
+    </body>
+</html>

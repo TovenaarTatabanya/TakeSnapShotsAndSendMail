@@ -1,0 +1,20 @@
+{
+	"settings": {
+	    "timeduration": "Tijd dat snapshots genomen worden (min)",
+		"intro": "Op deze pagina kun je de settings voor de webcam en de mail instellen.",
+		"mailsettings": "Mail settings",
+	    "interval_secs": "Tijd tussen de snapshots (secs)",
+		"localipadress": "Local ip adress (zonder http://)",
+		"portNumber": "Portnummer",
+		"webcamcmd": "Webcam commandline",
+		"additionalparams": "Extra parameters",
+		"mailhostname": "SMTP server",
+		"mailsecure": "Secure mail(waar voor poort 465)",
+		"mailfromadress": "Mailadres afzender",
+		"mailtoadress": "Mailadres ontvanger",
+		"mailsubject": "Mail onderwerp",
+	    "mailtext":"Mail tekst",
+		"mailpassword": "Gebruikersnaam voor SMTP server",
+		"save": "Opslaan"
+	 }
+}

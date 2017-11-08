@@ -1,0 +1,45 @@
+{
+    "id": "takesnapshots.sendmail",
+    "sdk" :2,
+    "name": {
+        "en": "IP cam snapshots",
+        "nl": "IP camera snapshots"
+    },
+    "version": "0.0.1",
+    "compatibility": ">=1.5.0",
+    "author": {
+        "name": "Twan Linschoten",
+        "email": "tlinschoten@hotmail.com"
+    },
+    "contributors": {
+	    "developers": [
+		    {
+			    "name": "Twan Linschoten",
+				"email": "tlinschoten@hotmail"
+			}
+	    ]
+    },
+    "images": {
+      "large": "./assets/images/large.jpg",
+      "small": "./assets/images/small.jpg"
+    },
+    "category": "tools",
+    "description": {
+    	"en": "Take snapshots from your IP camera and send them to your e-mail adress",
+        "nl": "Neem IP camera snapshots en stuur ze naar je e-mail adres"
+    },
+    "dependencies": {
+    		"net": "*"
+    },
+     "flow": {
+        "actions": [
+        {
+            "id": "takesnapshotssendmail",
+            "title": {
+                "en": "Take snapshots and send mail",
+                "nl": "Neem snapshots en stuur een mail"
+                }
+        }
+       ]
+    }
+}
