@@ -20,8 +20,8 @@
 	    ]
     },
     "images": {
-      "large": "./assets/images/large.png",
-      "small": "./assets/images/small.png"
+      "large": "./assets/Images/large.png",
+      "small": "./assets/Images/small.png"
     },
     "category": "tools",
     "description": {
